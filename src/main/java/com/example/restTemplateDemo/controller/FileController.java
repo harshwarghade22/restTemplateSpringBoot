@@ -45,4 +45,12 @@ public class FileController {
                 .body(data);
     }
 
+    @GetMapping("/presign")
+    public ResponseEntity<String> generateUrl(@RequestParam String fileName) {
+
+        String url = s3Service.generatePresignedUrl(fileName);
+
+        return ResponseEntity.ok(url);
+    }
+
 }
